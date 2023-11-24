@@ -16,6 +16,7 @@ set(SRC
     optimizer_cse.cc
     subgraph.cc
     tensor_id.cc
+    testlib.cc
 )
 
 add_library(graph OBJECT ${SRC})

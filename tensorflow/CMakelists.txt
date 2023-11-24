@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 3.18)
 add_subdirectory(core)
 #add_subdirectory(stream_executor)
 
-set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--export-all-symbols")
-set(LINK_FLAGS ${LINK_FLAGS} "-Wl,-whole-archive")
+#set(CMAKE_SHARED_LINKER_FLAGS "-Wl,--export-all-symbols")
+#set(LINK_FLAGS ${LINK_FLAGS} "-Wl,-whole-archive")
 
 add_library(tensorflow SHARED
     $<TARGET_OBJECTS:common_runtime>
@@ -16,5 +16,5 @@ add_library(tensorflow SHARED
     $<TARGET_OBJECTS:platform>
     $<TARGET_OBJECTS:util>
 )
-target_link_directories(tensorflow PUBLIC ${CMAKE_SOURCE_DIR}/external/re2/obj/)
-target_link_libraries(tensorflow protobuf re2)
+target_link_directories(tensorflow PRIVATE ${re2_dir}/obj/)
+target_link_libraries(tensorflow PRIVATE protobuf re2)

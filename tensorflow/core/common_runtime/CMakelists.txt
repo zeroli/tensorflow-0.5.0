@@ -11,6 +11,7 @@ set(SRC
     local_session.cc
     rendezvous_mgr.cc
     session_factory.cc
+    session_options.cc
     session.cc
     simple_placer.cc
     threadpool_device.cc
