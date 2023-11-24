@@ -57,7 +57,7 @@ void* aligned_malloc(size_t size, int minimum_alignment) {
 #endif
 }
 
-void aligned_free(void* aligned_memory) { free(aligned_memory); }
+void aligned_free(void* aligned_memory) { _aligned_free(aligned_memory); }
 
 void AdjustFilenameForLogging(string* filename) {
   // Nothing to do
