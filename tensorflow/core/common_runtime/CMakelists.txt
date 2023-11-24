@@ -14,6 +14,7 @@ set(SRC
     session_options.cc
     session.cc
     simple_placer.cc
+    threadpool_device_factory.cc
     threadpool_device.cc
 )
 
