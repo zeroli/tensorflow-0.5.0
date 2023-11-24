@@ -22,6 +22,20 @@ add_compile_definitions(EIGEN2_SUPPORT)
 
 add_subdirectory(tensorflow)
 
+# tensorflow library
+add_library(tensorflow SHARED
+    $<TARGET_OBJECTS:common_runtime>
+    $<TARGET_OBJECTS:framework>
+    $<TARGET_OBJECTS:graph>
+    $<TARGET_OBJECTS:kernels>
+    $<TARGET_OBJECTS:lib>
+    $<TARGET_OBJECTS:ops>
+    $<TARGET_OBJECTS:platform>
+    $<TARGET_OBJECTS:util>
+)
+target_link_directories(tensorflow PRIVATE ${re2_dir}/obj/)
+target_link_libraries(tensorflow PRIVATE protobuf re2)
+
 # tf_test for unit test
 add_executable(tf_test
     tensorflow/core/platform/test_main.cc
