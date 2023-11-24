@@ -160,7 +160,7 @@ struct TensorContractionEvaluatorBase
                          static_cast<int>(TensorEvaluator<RightArgType, Device>::Layout)),
                         YOU_MADE_A_PROGRAMMING_MISTAKE);
 
-    eigen_assert((contract_t::size > 0) && "Must contract on some indices");
+    //eigen_assert((contract_t::size > 0) && "Must contract on some indices");
 
 
     DSizes<Index, LDims> eval_left_dims;

@@ -2,5 +2,7 @@
     "files.associations": {
         "*.cu": "cpp",
         "*.inc": "cpp"
-    }
+    },
+    "esbonio.sphinx.confDir": "",
+    "iis.configDir": ""
 }
