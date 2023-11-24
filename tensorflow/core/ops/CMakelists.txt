@@ -1,0 +1,26 @@
+cmake_minimum_required(VERSION 3.18)
+
+set(SRC
+    array_ops.cc
+    attention_ops.cc
+    candidate_sampling_ops.cc
+    control_flow_ops.cc
+    data_flow_ops.cc
+    image_ops.cc
+    io_ops.cc
+    linalg_ops.cc
+    logging_ops.cc
+    math_ops.cc
+    nn_ops.cc
+    no_op.cc
+    parsing_ops.cc
+    random_ops.cc
+    sendrecv_ops.cc
+    sparse_ops.cc
+    state_ops.cc
+    string_ops.cc
+    summary_ops.cc
+    training_ops.cc
+)
+
+add_library(ops OBJECT ${SRC})

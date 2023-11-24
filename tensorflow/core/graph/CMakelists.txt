@@ -1,0 +1,21 @@
+cmake_minimum_required(VERSION 3.18)
+
+set(SRC
+    algorithm.cc
+    colors.cc
+    costmodel.cc
+    costutil.cc
+    dot.cc
+    edgeset.cc
+    equal_graph_def.cc
+    graph_constructor.cc
+    graph_def_builder.cc
+    graph_partition.cc
+    graph.cc
+    node_builder.cc
+    optimizer_cse.cc
+    subgraph.cc
+    tensor_id.cc
+)
+
+add_library(graph OBJECT ${SRC})

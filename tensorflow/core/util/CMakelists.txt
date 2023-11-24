@@ -1,0 +1,23 @@
+cmake_minimum_required(VERSION 3.18)
+
+set(SRC
+    event.pb.cc
+    saved_tensor_slice.pb.cc
+    bcast.cc
+    device_name_utils.cc
+    events_writer.cc
+    guarded_philox_random.cc
+    padding.cc
+    port.cc
+    saved_tensor_slice_util.cc
+    tensor_slice_reader_cache.cc
+    tensor_slice_reader.cc
+    tensor_slice_set.cc
+    tensor_slice_writer.cc
+    use_cudnn.cc
+    util.cc
+    work_sharder.cc
+)
+
+include_directories(${CMAKE_SOURCE_DIR})
+add_library(util OBJECT ${SRC})

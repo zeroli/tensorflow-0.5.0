@@ -16,8 +16,8 @@ namespace port {
 void InitMain(const char* usage, int* argc, char*** argv) {}
 
 string Hostname() {
-  char hostname[1024];
-  gethostname(hostname, sizeof hostname);
+  char hostname[1024] = "unknown";
+  //gethostname(hostname, sizeof hostname);
   hostname[sizeof hostname - 1] = 0;
   return string(hostname);
 }
@@ -46,10 +46,14 @@ void* aligned_malloc(size_t size, int minimum_alignment) {
   // memory aligned to at least the size of a pointer.
   const int required_alignment = sizeof(void*);
   if (minimum_alignment < required_alignment) return malloc(size);
+#if 1
+  return _aligned_malloc(size, minimum_alignment);
+#else
   if (posix_memalign(&ptr, minimum_alignment, size) != 0)
     return NULL;
   else
     return ptr;
+#endif
 #endif
 }
 

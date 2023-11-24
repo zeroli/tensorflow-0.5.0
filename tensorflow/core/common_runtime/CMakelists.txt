@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.18)
+
+set(SRC
+    device_factory.cc
+    device_mgr.cc
+    device_set.cc
+    device.cc
+    executor.cc
+    function.cc
+    local_device.cc
+    local_session.cc
+    rendezvous_mgr.cc
+    session_factory.cc
+    session.cc
+    simple_placer.cc
+    threadpool_device.cc
+)
+
+add_library(common_runtime OBJECT ${SRC})

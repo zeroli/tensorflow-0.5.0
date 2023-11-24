@@ -15,7 +15,19 @@ std::ostream& operator<<(std::ostream& o, StringPiece piece) {
 }
 
 bool StringPiece::contains(StringPiece s) const {
-  return memmem(data_, size_, s.data_, s.size_) != nullptr;
+  for (int i = 0; i < size_; i++) {
+    bool found = true;
+    for (int j = 0; j < s.size_; j++) {
+      if (data_[i] != s[j]) {
+        found = false;
+        break;
+      }
+    }
+    if (found) {
+      return found;
+    }
+  }
+  return false;
 }
 
 size_t StringPiece::find(char c, size_t pos) const {

@@ -1,0 +1,48 @@
+cmake_minimum_required(VERSION 3.18)
+
+set(SRC
+    allocation_description.pb.cc
+    attr_value.pb.cc
+    device_attributes.pb.cc
+    config.pb.cc
+    function.pb.cc
+    graph.pb.cc
+    kernel_def.pb.cc
+    op_def.pb.cc
+    step_stats.pb.cc
+    summary.pb.cc
+    tensor_description.pb.cc
+    tensor_shape.pb.cc
+    tensor_slice.pb.cc
+    tensor.pb.cc
+    types.pb.cc
+    allocator.cc
+    attr_value_util.cc
+    bfloat16.cc
+    cancellation.cc
+    device_base.cc
+    fake_input.cc
+    function.cc
+    graph_def_util.cc
+    kernel_def_builder.cc
+    lookup_interface.cc
+    node_def_builder.cc
+    node_def_util.cc
+    op_def_builder.cc
+    op_def_util.cc
+    op_gen_lib.cc
+    op_kernel.cc
+    op_segment.cc
+    op.cc
+    reader_op_kernel.cc
+    rendezvous.cc
+    resource_mgr.cc
+    tensor_shape.cc
+    tensor_slice.cc
+    tensor_util.cc
+    tensor.cc
+    tracking_allocator.cc
+    types.cc
+)
+
+add_library(framework OBJECT ${SRC})

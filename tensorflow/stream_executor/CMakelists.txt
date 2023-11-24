@@ -1,0 +1,32 @@
+cmake_minimum_required(VERSION 3.18)
+
+cmake_minimum_required(VERSION 3.18)
+
+set(SRC
+    blas.cc
+    device_description.cc
+    dnn.cc
+    dso_loader.cc
+    event.cc
+    executor_cache.cc
+    kernel_spec.cc
+    kernel.cc
+    machine_manager.cc
+    platform.cc
+    plugin_registry.cc
+    plugin.cc
+    rng.cc
+    stream_executor_internal.cc
+    stream_executor_pimpl.cc
+    stream.cc
+    temporary_device_memory.cc
+    temporary_memory_manager.cc
+    timer.cc
+    lib/demangle.cc
+    lib/numbers.cc
+    lib/path.cc
+    lib/process_state.cc
+)
+
+include_directories(${CMAKE_SOURCE_DIR})
+add_library(stream_executor STATIC ${SRC})

@@ -66,6 +66,7 @@
 #endif  // __GCUDACC__
 #endif  // EIGEN_USE_GPU
 
+#if 0
 #ifdef _WIN32
 #include <winbase.h>
 #elif defined(__APPLE__)
@@ -73,6 +74,8 @@
 #else
 #include <time.h>
 #endif
+#endif
+#include <time.h>
 
 #include "Eigen/Core"
 

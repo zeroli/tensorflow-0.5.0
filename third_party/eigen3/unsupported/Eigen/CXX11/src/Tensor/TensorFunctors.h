@@ -20,6 +20,7 @@ __device__ int get_random_seed() {
 }
 #else
 int get_random_seed() {
+#if 0
 #ifdef _WIN32
     SYSTEMTIME st;
     GetSystemTime(&st);
@@ -31,6 +32,10 @@ int get_random_seed() {
     clock_gettime(CLOCK_REALTIME, &ts);
     return ts.tv_nsec;
 #endif
+#endif
+    timespec ts;
+    clock_gettime(CLOCK_REALTIME, &ts);
+    return ts.tv_nsec;
 }
 #endif
 }

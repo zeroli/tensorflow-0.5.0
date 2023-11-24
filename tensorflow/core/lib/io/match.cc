@@ -1,5 +1,5 @@
 #include "tensorflow/core/lib/io/match.h"
-#include <fnmatch.h>
+//#include <fnmatch.h>
 #include "tensorflow/core/lib/io/path.h"
 #include "tensorflow/core/public/env.h"
 
@@ -19,10 +19,13 @@ Status GetMatchingFiles(Env* env, const string& pattern,
   }
   for (const auto& f : all_files) {
     int flags = 0;
+    assert(0);
+    #if 0
     if (fnmatch(basename_pattern.c_str(), Basename(f).ToString().c_str(),
                 flags) == 0) {
       results->push_back(JoinPath(dir, f));
     }
+    #endif
   }
   return Status::OK();
 }

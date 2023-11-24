@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 3.18)
+
+set(SRC
+    env.cc
+    protobuf_util.cc
+    tensor_coding.cc
+    tracing.cc
+    default/logging.cc
+    default/tracing.cc
+    posix/env.cc
+    posix/port.cc
+)
+
+add_library(platform OBJECT ${SRC})

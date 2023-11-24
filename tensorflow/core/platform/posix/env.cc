@@ -67,15 +67,15 @@ error::Code ErrnoToCode(int err_number) {
     case EBUSY:       // Device or resource busy
     case ECHILD:      // No child processes
     case EISCONN:     // Socket is connected
-    case ENOTBLK:     // Block device required
+    //case ENOTBLK:     // Block device required
     case ENOTCONN:    // The socket is not connected
     case EPIPE:       // Broken pipe
-    case ESHUTDOWN:   // Cannot send after transport endpoint shutdown
+    //case ESHUTDOWN:   // Cannot send after transport endpoint shutdown
     case ETXTBSY:     // Text file busy
       code = error::FAILED_PRECONDITION;
       break;
     case ENOSPC:   // No space left on device
-    case EDQUOT:   // Disk quota exceeded
+    //case EDQUOT:   // Disk quota exceeded
     case EMFILE:   // Too many open files
     case EMLINK:   // Too many links
     case ENFILE:   // Too many open files in system
@@ -83,7 +83,7 @@ error::Code ErrnoToCode(int err_number) {
     case ENODATA:  // No message is available on the STREAM read queue
     case ENOMEM:   // Not enough space
     case ENOSR:    // No STREAM resources
-    case EUSERS:   // Too many users
+    //case EUSERS:   // Too many users
       code = error::RESOURCE_EXHAUSTED;
       break;
     case EFBIG:      // File too large
@@ -94,9 +94,9 @@ error::Code ErrnoToCode(int err_number) {
     case ENOSYS:           // Function not implemented
     case ENOTSUP:          // Operation not supported
     case EAFNOSUPPORT:     // Address family not supported
-    case EPFNOSUPPORT:     // Protocol family not supported
+    //case EPFNOSUPPORT:     // Protocol family not supported
     case EPROTONOSUPPORT:  // Protocol not supported
-    case ESOCKTNOSUPPORT:  // Socket type not supported
+    //case ESOCKTNOSUPPORT:  // Socket type not supported
     case EXDEV:            // Improper link
       code = error::UNIMPLEMENTED;
       break;
@@ -105,7 +105,7 @@ error::Code ErrnoToCode(int err_number) {
     case ECONNABORTED:  // Connection aborted
     case ECONNRESET:    // Connection reset
     case EINTR:         // Interrupted function call
-    case EHOSTDOWN:     // Host is down
+    //case EHOSTDOWN:     // Host is down
     case EHOSTUNREACH:  // Host is unreachable
     case ENETDOWN:      // Network is down
     case ENETRESET:     // Connection aborted by network
@@ -113,12 +113,12 @@ error::Code ErrnoToCode(int err_number) {
     case ENOLCK:        // No locks available
     case ENOLINK:       // Link has been severed
 #if !defined(__APPLE__)
-    case ENONET:        // Machine is not on the network
+    //case ENONET:        // Machine is not on the network
 #endif
       code = error::UNAVAILABLE;
       break;
     case EDEADLK:  // Resource deadlock avoided
-    case ESTALE:   // Stale file handle
+    //case ESTALE:   // Stale file handle
       code = error::ABORTED;
       break;
     case ECANCELED:  // Operation cancelled
@@ -135,7 +135,7 @@ error::Code ErrnoToCode(int err_number) {
     case ENOEXEC:      // Exec format error
     case ENOMSG:       // No message of the desired type
     case EPROTO:       // Protocol error
-    case EREMOTE:      // Object is remote
+    //case EREMOTE:      // Object is remote
       code = error::UNKNOWN;
       break;
     default: {
@@ -172,7 +172,12 @@ class PosixRandomAccessFile : public RandomAccessFile {
     Status s;
     char* dst = scratch;
     while (n > 0 && s.ok()) {
+      #if 1
+      lseek(fd_, offset, SEEK_SET);
+      ssize_t r = read(fd_, dst, n);
+      #else
       ssize_t r = pread(fd_, dst, n, static_cast<off_t>(offset));
+      #endif
       if (r > 0) {
         dst += r;
         n -= r;
@@ -326,7 +331,7 @@ class PosixEnv : public Env {
 
   Status CreateDir(const string& name) override {
     Status result;
-    if (mkdir(name.c_str(), 0755) != 0) {
+    if (mkdir(name.c_str()) != 0) {
       result = IOError(name, errno);
     }
     return result;

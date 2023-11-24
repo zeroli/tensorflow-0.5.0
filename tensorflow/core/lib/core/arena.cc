@@ -17,7 +17,7 @@
 namespace tensorflow {
 namespace core {
 
-static const int kPageSize = getpagesize();
+static const int kPageSize = 4096 * 1024; // getpagesize();
 
 // ----------------------------------------------------------------------
 // Arena::Arena()

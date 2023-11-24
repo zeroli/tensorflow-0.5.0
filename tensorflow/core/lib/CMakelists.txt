@@ -1,0 +1,42 @@
+cmake_minimum_required(VERSION 3.18)
+
+set(SRC
+    core/error_codes.pb.cc
+    core/arena.cc
+    core/coding.cc
+    core/command_line_flags.cc
+    core/error_codes.pb.cc
+    core/refcount.cc
+    core/status.cc
+    core/stringpiece.cc
+    core/threadpool.cc
+    hash/crc32c.cc
+    hash/hash.cc
+    histogram/histogram.cc
+    io/block_builder.cc
+    io/block.cc
+    io/format.cc
+    io/inputbuffer.cc
+    io/iterator.cc
+    io/match.cc
+    io/path.cc
+    io/record_reader.cc
+    io/record_writer.cc
+    io/table_builder.cc
+    io/table.cc
+    io/two_level_iterator.cc
+    #jpeg/jpeg_handle.cc
+    #jpeg/jpeg_mem.cc
+    #png/png_io.cc
+    random/distribution_sampler.cc
+    random/random.cc
+    random/simple_philox.cc
+    random/weighted_picker.cc
+    strings/numbers.cc
+    strings/ordered_code.cc
+    strings/str_util.cc
+    strings/strcat.cc
+    strings/stringprintf.cc
+)
+
+add_library(lib OBJECT ${SRC})
