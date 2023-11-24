@@ -61,6 +61,7 @@ set(SRC
     cwise_op_sub.cc
     # cwise_op_tanh.cc
     cwise_ops_common.cc
+    dense_update_ops.cc
     # gather_op.cc
     identity_op.cc
     # in_topk_op.cc
@@ -76,7 +77,7 @@ set(SRC
     matmul_op.cc
     # matrix_inverse_op.cc
     # maxpooling_op.cc
-    # no_op.cc
+    no_op.cc
     ops_util.cc
     # pack_op.cc
     # pad_op.cc
@@ -108,7 +109,7 @@ set(SRC
     # save_op.cc
     # scatter_op.cc
     # segment_reduction_ops.cc
-    # sendrecv_ops.cc
+    sendrecv_ops.cc
     # sequence_ops.cc
     # shape_ops.cc
     # slice_op.cc
@@ -127,7 +128,7 @@ set(SRC
     # transpose_op.cc
     # unique_op.cc
     # unpack_op.cc
-    # variable_ops.cc
+    variable_ops.cc
     # where_op.cc
     # whole_file_read_ops.cc
     # xent_op.cc
